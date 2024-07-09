@@ -8,7 +8,7 @@
 <form action="{{ url('barang/update') }}" onsubmit="return confirm('Apakah anda yakin sudah menggantinya ?');" method="POST" >
     {{ csrf_field() }}
     <input type="hidden" class="form-control" name="id" value="{{ $barang->id }}">
-    <div class="form-group">
+    <div class="form-group col-5">
         <label for="nama" class="mb-2 mt-2">Nama Barang</label>
         <input type="text" class="form-control" name="nama" value="{{ $barang->nama }}">
         <span style="color:red" >@error('nama'){{ $message }}@enderror</span>

@@ -38,19 +38,13 @@ class BarangController extends Controller
     }
     public function hapus($id)
     {
-        // Hapus file dari storage
-        // DB::table('barangs')->where('id', $id)->delete();
-        // Hapus record dari database
         $barangs = Barang::findorFail($id)->where('id', $id)->delete(); //untuk mengambil 1 data saja
 
         return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
     }
     public function edit($id)
     {
-        // mengambil data pegawai berdasarkan id yang dipilih
-        $barangs = Barang::findOrFail($id)->get();
-        // $barangs = DB::table('barangs')->where('id', $id)->get();
-        // $barangs= Barang::find($id); //untuk mengambil 1 data saja
+        $barangs = Barang::findOrFail($id)->where('id',$id)->get();
         return view('barang/edit', ['barangs' => $barangs]);
     }
     public function update(Request $request, Barang $barangs)
@@ -64,12 +58,12 @@ class BarangController extends Controller
         ]);
         $barangs = Barang::findorFail($request->id);
         // dd($request->all());
-        $barangs -> update([
-                'nama' => $request->input('nama'),
-                'kategori' => $request->input('kategori'),
-                'jenis' => $request->input('jenis'),
-                'harga' => $request->input('harga')
-            ]);
+        $barangs->update([
+            'nama' => $request->input('nama'),
+            'kategori' => $request->input('kategori'),
+            'jenis' => $request->input('jenis'),
+            'harga' => $request->input('harga')
+        ]);
 
         return redirect('barang/')->with(['success' => 'Data Berhasil Disimpan!']);
     }

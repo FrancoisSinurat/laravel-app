@@ -15,7 +15,6 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nama</th>
                 <th>Kategori</th>
                 <th>Jenis</th>
@@ -26,20 +25,18 @@
         <tbody>
             @foreach ($barangs as $barang)
                 <tr>
-                    <td>{{ $barang->id }}</td>
                     <td>{{ $barang->nama }}</td>
                     <td>{{ $barang->kategori }}</td>
                     <td>{{ $barang->jenis }}</td>
                     <td>{{ $barang->harga }}</td>
                     <td>
-                    
-                            
-                            <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
-                            |
-                            <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
+                        <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
+                        |
+                        <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
                         
                     </td>
                 </tr>
+                    {{-- {{ number_format($barang->harga,0,',','') }} --}}
             @endforeach
         </tbody>
     </table>
