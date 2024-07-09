@@ -27,54 +27,50 @@ class BarangController extends Controller
             'jenis' => 'required',
             'harga' => 'required'
         ]);
-        DB::table('barangs')->insert([
+
+        Barang::create([
             'nama' => $request->input('nama'),
             'kategori' => $request->input('kategori'),
             'jenis' => $request->input('jenis'),
             'harga' => $request->input('harga')
         ]);
-
-        // $barangs=Barang::create([
-        //     'nama' => $request->input('nama'),
-        //     'kategori' => $request->input('kategori'),
-        //     'jenis' => $request->input('jenis'),
-        //     'harga' => $request->input('harga')
-        // ]);
-        return redirect('barang/index')->with(['success' => 'Data Berhasil Ditambahkan!']);
+        return redirect('barang/')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
     public function hapus($id)
     {
         // Hapus file dari storage
         // DB::table('barangs')->where('id', $id)->delete();
         // Hapus record dari database
-        $barangs= Barang::findorFail($id)->where('id',$id)->delete(); //untuk mengambil 1 data saja
+        $barangs = Barang::findorFail($id)->where('id', $id)->delete(); //untuk mengambil 1 data saja
 
         return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
     }
     public function edit($id)
     {
         // mengambil data pegawai berdasarkan id yang dipilih
-        // $barangs = Barang::findOrFail($id)->get();
-        $barangs= DB::table('barangs')->where('id',$id)->get();
-        // $barangs= Barang::findorFail($id)->where('id',$id)->get(); //untuk mengambil 1 data saja
+        $barangs = Barang::findOrFail($id)->get();
+        // $barangs = DB::table('barangs')->where('id', $id)->get();
+        // $barangs= Barang::find($id); //untuk mengambil 1 data saja
         return view('barang/edit', ['barangs' => $barangs]);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request, Barang $barangs)
     {
+        // Barang::findorFail($id);
         $request->validate([
             'nama' => 'required',
             'kategori' => 'required',
             'jenis' => 'required',
             'harga' => 'required'
         ]);
-        $barangs= DB::table('barangs')->where('id',$id);
-        // $barangs= Barang::findorFail($id)->where('id',$id);
-        $barangs->update([
-            'nama' => $request->input('nama'),
-            'kategori' => $request->input('kategori'),
-            'jenis' => $request->input('jenis'),
-            'harga' => $request->input('harga')
-        ]);
-        return redirect('barang/index')->view(['barangs' => $barangs])->with(['success' => 'Data Berhasil Disimpan!']);
+        $barangs = Barang::findorFail($request->id);
+        // dd($request->all());
+        $barangs -> update([
+                'nama' => $request->input('nama'),
+                'kategori' => $request->input('kategori'),
+                'jenis' => $request->input('jenis'),
+                'harga' => $request->input('harga')
+            ]);
+
+        return redirect('barang/')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 }

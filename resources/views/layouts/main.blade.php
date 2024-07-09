@@ -25,7 +25,7 @@
                 <a class="nav-link " href="/Aset.data-aset">Aset</a>
               </li> --}}
               <li class="nav-item ">
-                <a class="nav-link " href="/barang/index">
+                <a class="nav-link " href="/barang">
                   Barang
                 </a>
               </li>

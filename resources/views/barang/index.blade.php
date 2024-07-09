@@ -34,7 +34,7 @@
                     <td>
                     
                             
-                            <button class="btn btn-dark"><a href="{{route('barang/edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
+                            <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
                             |
                             <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
                         

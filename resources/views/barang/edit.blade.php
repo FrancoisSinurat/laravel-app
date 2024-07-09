@@ -5,8 +5,8 @@
 <h2>Edit Barang</h2>
 
 @foreach ($barangs as $barang)
-<form action="/barang/update/" onsubmit="return confirm('Apakah anda yakin sudah menggantinya ?');" method="POST" >
-    @csrf
+<form action="{{ url('barang/update') }}" onsubmit="return confirm('Apakah anda yakin sudah menggantinya ?');" method="POST" >
+    {{ csrf_field() }}
     <input type="hidden" class="form-control" name="id" value="{{ $barang->id }}">
     <div class="form-group">
         <label for="nama" class="mb-2 mt-2">Nama Barang</label>
