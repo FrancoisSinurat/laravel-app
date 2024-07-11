@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 @section('container')
-<h2>Daftar Barang</h2>
+<h2>Daftar Kategori</h2>
 
 @if(session('success'))
     <div class="alert alert-success">
@@ -10,16 +10,32 @@
     </div>
 @endif
 
-<button class="btn btn-warning mb-2 mt-2" ><a href="/barang/add" style="text-decoration:none; color:black">Tambah Data</a></button>
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    @foreach ($kategoris as $k) 
+
+            <tbody>
+                <tr>
+                    <td> {{ $k->id }} </td>
+                    <td> {{ $k->nama }} </td>
+                </tr>
+            </tbody>
+            @endforeach
+    
+</table>
+{{-- <button class="btn btn-warning mb-2 mt-2" ><a href="/barang/add" style="text-decoration:none; color:black">Tambah Data</a></button>
 
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nama</th>
-                <th><a href="/kategori">Kategori</a></th>
-                <th><a href="/jenis">Jenis</a></th>
-                <th>Harga</th>
-                <th>Opsi</th>
+                <th>Id</th>
+                <th>Kategori</th>
+                <th>Barang_id</th>
             </tr>
         </thead>
         <tbody>
@@ -36,9 +52,9 @@
                         
                     </td>
                 </tr>
-                    {{-- {{ number_format($barang->harga,0,',','') }} --}}
-            @endforeach
-        </tbody>
-    </table>
-@endsection
+                @endforeach
+            </tbody>
+        </table> --}}
+        {{-- {{ number_format($barang->harga,0,',','') }} --}}
+        @endsection
 

@@ -21,18 +21,19 @@ class BarangController extends Controller
     }
     public function add(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'nama' => 'required',
-            'kategori' => 'required',
+            'kategori_id' => 'required',
             'jenis' => 'required',
             'harga' => 'required'
         ]);
 
         Barang::create([
-            'nama' => $request->input('nama'),
-            'kategori' => $request->input('kategori'),
-            'jenis' => $request->input('jenis'),
-            'harga' => $request->input('harga')
+            'nama' => $request->nama,
+            'kategori_id' => $request->kategori_id,
+            'jenis' => $request->jenis,
+            'harga' => $request->harga
         ]);
         return redirect('barang/')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
