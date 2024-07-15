@@ -15,9 +15,9 @@
             <label for="kategori" class="mb-2 mt-2">Kategori <span style="color: red">*</span></label>
             
             <select class="form-control " name="kategori_id" id="kategori">
-                @foreach ($kategoris as $kategori)
+                @foreach ($kategoris as $k => $barangs)
                 <option hidden>Pilih Kategori</option>
-                <option value="{{ $kategori->id }}"><span>{{ $kategori->nama }}</span></option>
+                <option value="{{ $k->id }}"><span>{{ $k->nama }}</span></option>
                 @endforeach
             </select>
     <div class="form-group">
