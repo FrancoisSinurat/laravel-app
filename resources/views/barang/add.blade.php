@@ -15,9 +15,9 @@
             <label for="kategori" class="mb-2 mt-2">Kategori <span style="color: red">*</span></label>
             
             <select class="form-control " name="kategori_id" id="kategori">
-                @foreach ($kategoris as $k => $barangs)
+                @foreach ($kategoris as $k)
                 <option hidden>Pilih Kategori</option>
-                <option value="{{ $k->id }}"><span>{{ $k->nama }}</span></option>
+                <option value="{{ $k->id }}">{{ $k->id }}. <span>{{ $k->nama }}</span></option>
                 @endforeach
             </select>
     <div class="form-group">
@@ -25,13 +25,16 @@
         <input type="text" class="form-control" name="jenis" placeholder="Masukkan Jenis Barang">
     </div>
     <div class="form-group">
-        <label for="harga" class="mb-2 mt-2">Harga Barang<span style="color: red">*</span></label>
+        <label for="harga" class="mb-2 mt-2">Harga Barang <span style="color: red">*</span></label>
         <input type="number" class="form-control" name="harga" id="rupiah" placeholder="Masukkan Harga Barang">
         {{-- onkeydown="cobaharga()" --}}
     </div>
+    {{-- <div class="form-group">
+        <label for="image" class="form-label mb-2 mt-2">Upload Image <span style="color: red">*</span></label>
+        <input class="form-control" type="file" name="image" id="formFile">
+      </div>     --}}
     <div class="form-group">
         <button class="btn btn-primary mt-3" type="submit">Submit form</button>
       </div>
-    
     </form>
 @endsection

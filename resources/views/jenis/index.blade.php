@@ -15,7 +15,6 @@
             <tr>
                 <th>Id</th>
                 <th>Jenis</th>
-                <th>Barang_id</th>
             </tr>
         </thead>
         @foreach ($jenis as $k ) {
@@ -24,7 +23,6 @@
                 <tr>
                     <td>{{ $k->id }}</td>
                     <td>{{ $k->nama_jenis }}</td>
-                    <td>{{ $k->id }}</td>
                 </tr>
             </tbody>
         }           

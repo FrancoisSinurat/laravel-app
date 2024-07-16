@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
             // $table->unsignedBigInteger('kategori_id');
-            $table->string("nama");
             $table->foreignId('kategori_id');
+            $table->string("nama");
             $table->string("jenis","20");
             $table->integer("harga");
+            // $table->string('image')->nullable();
             $table->timestamps();
         });
     }

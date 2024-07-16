@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Kategori;
 use Brick\Math\BigInteger;
 use DateTime;
 use Faker\Provider\en_US\Text;
@@ -24,7 +25,7 @@ class BarangFactory extends Factory
     {
         return [
             'nama' => fake()->name(),
-            'kategori' => fake()->sentence(1),
+            'kategori_id' => Kategori::all()->random()->id,
             'jenis' => fake()->sentence(1),
             'harga' => fake()->numerify(random_int(1000,10000)),
         ];

@@ -20,22 +20,24 @@
                 <th><a href="/jenis">Jenis</a></th>
                 <th>Harga</th>
                 <th>Opsi</th>
+                {{-- <th>Gambar</th> --}}
             </tr>
         </thead>
         <tbody>
             @foreach ($barangs as $barang)
-                <tr>
-                    <td>{{ $barang->nama }}</td>
-                    <td>{{ $barang->kategori }}</td>
-                    <td>{{ $barang->jenis }}</td>
-                    <td>{{ $barang->harga }}</td>
-                    <td>
-                        <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
-                        |
-                        <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
-                        
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ $barang->nama }}</td>
+                <td>{{ $barang->kategori_id }}</td>
+                <td>{{ $barang->jenis }}</td>
+                <td>{{ $barang->harga }}</td>
+                <td>
+                    <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
+                    |
+                    <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
+                    
+                </td>
+                {{-- <td>{{ $barang->image }}</td> --}}
+            </tr>
                     {{-- {{ number_format($barang->harga,0,',','') }} --}}
             @endforeach
         </tbody>

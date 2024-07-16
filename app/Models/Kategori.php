@@ -12,6 +12,10 @@ class Kategori extends Model
      protected $fillable=['nama'];
      public function barangs()
     {
-        return $this->belongsTo(Barang::class,'kategori_id');
+        return $this->hasOne(Barang::class);
     }
+    //  public function jenis()
+    // {
+    //     return $this->belongsTo(Jenis::class);
+    // }
 }
