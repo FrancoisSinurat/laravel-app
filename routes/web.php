@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Models\Kategori;
 
+// Route::get('/', function () {
+//     return view('login.index');
+// });
 Route::get('/', function () {
     return view('home');
 });

@@ -3,12 +3,14 @@
 
 @section('container')
 <h2>Daftar Barang</h2>
-
+{{-- 
 @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-@endif
+@endif --}}
+
+@include('sweetalert::alert')
 
 <button class="btn btn-warning mb-2 mt-2" ><a href="/barang/add" style="text-decoration:none; color:black">Tambah Data</a></button>
 
@@ -33,7 +35,7 @@
                 <td>
                     <button class="btn btn-dark"><a href="{{ route('barang.edit' ,$barang->id)  }}" style="text-decoration: none; color:azure">Edit</a></button>
                     |
-                    <button class="btn btn-danger"><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure">Hapus</a></button>
+                    <button class="btn btn-danger"  ><a href="{{ route('barang/hapus', $barang->id) }}" style="text-decoration: none; color:azure" >Hapus</a></button>
                     
                 </td>
                 {{-- <td>{{ $barang->image }}</td> --}}

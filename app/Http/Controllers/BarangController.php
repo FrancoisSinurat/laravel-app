@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Barang;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use function Laravel\Prompts\confirm;
 
@@ -40,15 +40,17 @@ class BarangController extends Controller
             'harga' => $request->harga,
             // 'image' => $request->image,
         ]);
-        return redirect('barang/')->with(['success' => 'Data Berhasil Ditambahkan!']);
-
+        Alert::success('Data Berhasil Ditambahkan');
+        return redirect('barang/');
+        
     }
-
+    
     public function hapus($id)
     {
         $barangs = Barang::findorFail($id)->where('id', $id)->delete(); //untuk mengambil 1 data saja
+        alert()->success( 'Data Berhasil Dihapus');
 
-        return redirect()->back()->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->back();
     }
     public function edit($id)
     {
@@ -73,7 +75,8 @@ class BarangController extends Controller
             'jenis' => $request->input('jenis'),
             'harga' => $request->input('harga')
         ]);
-
+        
+        Alert::success('Data Berhasil Disimpan');
         return redirect('barang/')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 }
