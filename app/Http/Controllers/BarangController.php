@@ -26,11 +26,13 @@ class BarangController extends Controller
 
         $request->validate([
             'nama' => 'required',
+            'kategori_id' => 'required',
             'jenis' => 'required',
-            'harga' => 'required',
+            'harga' => 'required',  
             // 'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
-        
+       
+
         Barang::create([
             'nama' => $request->nama,
             'kategori_id' => $request->kategori_id,
@@ -39,7 +41,9 @@ class BarangController extends Controller
             // 'image' => $request->image,
         ]);
         return redirect('barang/')->with(['success' => 'Data Berhasil Ditambahkan!']);
+
     }
+
     public function hapus($id)
     {
         $barangs = Barang::findorFail($id)->where('id', $id)->delete(); //untuk mengambil 1 data saja
@@ -49,14 +53,15 @@ class BarangController extends Controller
     public function edit($id)
     {
         $barangs = Barang::findOrFail($id)->where('id', $id)->get();
-        return view('barang/edit', ['barangs' => $barangs]);
+        $kategoris = Kategori::all();
+        return view('barang/edit', ['barangs' => $barangs],['kategoris' => $kategoris]);
     }
     public function update(Request $request, Barang $barangs)
     {
         // Barang::findorFail($id);
         $request->validate([
             'nama' => 'required',
-            'kategori' => 'required',
+            'kategori_id' => 'required',
             'jenis' => 'required',
             'harga' => 'required'
         ]);
@@ -64,7 +69,7 @@ class BarangController extends Controller
         // dd($request->all());
         $barangs->update([
             'nama' => $request->input('nama'),
-            'kategori' => $request->input('kategori'),
+            'kategori_id' => $request->input('kategori_id'),
             'jenis' => $request->input('jenis'),
             'harga' => $request->input('harga')
         ]);

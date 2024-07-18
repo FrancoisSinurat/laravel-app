@@ -30,3 +30,5 @@ Route::get('/kategori', [KategoriController::class, 'index']);
 
 //jenis field
 Route::get('/jenis', [JenisController::class, 'index']);
+
+// upload field

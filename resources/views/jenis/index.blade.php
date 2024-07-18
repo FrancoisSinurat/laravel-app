@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Jenis</th>
+                <th>Jenis</th>  
             </tr>
         </thead>
         @foreach ($jenis as $k ) {

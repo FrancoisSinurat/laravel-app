@@ -18,12 +18,11 @@ return new class extends Migration
             $table->string("nama");
             $table->string("jenis","20");
             $table->integer("harga");
-            // $table->string('image')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
+    /**A
      * Reverse the migrations.
      */
     public function down(): void
